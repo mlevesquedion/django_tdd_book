@@ -18,4 +18,4 @@ def test_title(browser):
 
 
 def test_edith_story(browser):
-    pass
+    assert "Good job!" == "No wait, you haven't finished writing this test."
