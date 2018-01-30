@@ -1,16 +1,12 @@
 import pytest
 from selenium import webdriver
-import subprocess as sp
-
-
-# Start server
-sp.Popen(['python', 'manage.py', 'runserver'])
 
 
 @pytest.fixture(scope='session')
 def browser():
     browser = webdriver.Chrome()
     browser.get('http://localhost:8000')
+    browser.implicitly_wait(2)
 
     yield browser
 
@@ -18,4 +14,8 @@ def browser():
 
 
 def test_title(browser):
-    assert 'Django' in browser.title
+    assert 'To-Do' in browser.title
+
+
+def test_edith_story(browser):
+    pass
