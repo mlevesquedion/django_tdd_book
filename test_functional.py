@@ -42,4 +42,16 @@ def test_edith_story(browser):
     rows = table.find_elements_by_tag_name('tr')
     assert any(row.text == '1: Buy peacock feathers' for row in rows)
 
+    # There is still a text box inviting her to add another item.
+    # She enters "Use peacock feathers to make a fly"
+    inputbox = browser.find_element_by_id('id_new_item')
+    inputbox.send_keys('Use peacock feathers to make a fly')
+    inputbox.send_keys(Keys.ENTER)
+
+    # The page updates again, and now shows both items on her list
+    table = browser.find_element_by_id('id_list_table')
+    rows = table.find_elements_by_tag_name('tr')
+    assert any(row.text == '1: Buy peacock feathers' for row in rows)
+    assert any(row.text == '2: Use peacock feathers to make a fly' for row in rows)
+
     assert "You're done" == "Finish the test!!"
