@@ -19,7 +19,7 @@ from lists.views import home_page, view_list, new_list
 
 urlpatterns = [
     url(r'^$', home_page, name='home'),
-    url(r'^lists/only-list$', view_list, name='lists.views.view_list'),
+    url(r'^lists/(\d+)$', view_list, name='lists.views.view_list'),
     url(r'^lists/new$', new_list, name='lists.views.new_list'),
     url(r'^admin/', admin.site.urls),
 ]
